@@ -3,6 +3,7 @@ import copy
 import random
 
 class Engine:
+    """Game engine. Maintains board state and returns it for rendering"""
     def __init__(self, depth=2):
         self.depth = depth
         self.state = [[0 for i in range(4)] for j in range(4)]
@@ -10,8 +11,7 @@ class Engine:
 
     def get_next(self):
         opens = openTiles(self.state)
-        
-
+      
         if self.machine_turn:
             if len(opens) == 0:
                 pass
@@ -40,9 +40,9 @@ def score(state):
 
 def score_bottom_right(state):
     positional = positional_scoring(state)
-    neighbors = neighbor_scoring(state)
-    network = network_scoring(state)
-    return state + positional
+    # neighbors = neighbor_scoring(state)
+    # network = network_scoring(state)
+    return positional
 
 
 def positional_scoring(state):

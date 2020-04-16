@@ -3,6 +3,7 @@ import time
 from game import Engine
 
 class MockEngine:
+    """Mock for developing frontend"""
     def __init__(self):
         self.count = 0
 
@@ -17,8 +18,8 @@ class MockEngine:
         return [[self.count * item for item in row] for row in template]
 
 def color_from_num(num):
+    """Returns a string color to use for the tile, given numeric val"""
     val = int(num)
-
     if val == 0:
         return "snow3"
     elif val <= 2:
@@ -37,20 +38,17 @@ def color_from_num(num):
         return "gold"
 
 
-
 def run(engine):
+    """Main loop of function. Run until game is finished"""
     top = tkinter.Tk()
-
     top.configure(background="grey")
     
-
     labels = []
     for r in range(4):
         row = []
         for c in range(4):
             row.append(tkinter.StringVar())
         labels.append(row)
-
 
     state = engine.get_next() #initial state
     frames = []
